@@ -45,6 +45,15 @@ tasks
   due_date: Date
 }
 
+TaskSubmissions
+{
+  _id: ObjectId,
+  task_id: ObjectId, // Reference to Tasks collection
+  user_id: ObjectId, // Reference to Users collection
+  submittedDate: Date,
+  status: Boolean // true or false
+}
+
 company_drives
 {
   _id: ObjectId,
@@ -60,17 +69,6 @@ mentors
   email: String,
   mentees: [ObjectId] // References to Users collection
 }
-
-TaskSubmissions
-{
-  _id: ObjectId,
-  task_id: ObjectId, // Reference to Tasks collection
-  user_id: ObjectId, // Reference to Users collection
-  submittedDate: Date,
-  status: Boolean // true or false
-}
-
-
 
 
 1. Find all the topics and tasks which are thought in the month of October
@@ -159,7 +157,6 @@ db.mentors.aggregate([
   }
 ]);
 
-
 6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
 db.attendance.aggregate([
     {
@@ -194,5 +191,3 @@ db.attendance.aggregate([
         }
     }
 ]);
-
-
